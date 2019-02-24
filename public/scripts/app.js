@@ -18,7 +18,7 @@ var template = React.createElement(
     React.createElement(
         'p',
         null,
-        'babel src/app.js --output-file=public/scripts/app.js'
+        'babel src/app.js --out-file=public/scripts/app.js --preset --presets=env,react --watch'
     ),
     React.createElement(
         'ol',
@@ -41,6 +41,36 @@ var template = React.createElement(
     )
 );
 
-var appRoot = document.getElementById('app');
+var user = {
+    name: 'Timothy Shores',
+    age: 30,
+    city: 'Chicago'
+};
 
-ReactDOM.render(test, appRoot);
+var name = 'Timothy Shores';
+var age = 30;
+var city = 'Chicago';
+
+var templateTwo = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        name
+    ),
+    React.createElement(
+        'p',
+        null,
+        age,
+        ' years old'
+    ),
+    React.createElement(
+        'p',
+        null,
+        'Location: ',
+        city
+    )
+);
+
+ReactDOM.render(templateTwo, document.getElementById('app'));
