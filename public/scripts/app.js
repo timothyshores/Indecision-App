@@ -44,32 +44,31 @@ var template = React.createElement(
 var user = {
     name: 'Timothy Shores',
     age: 30,
-    city: 'Chicago'
-};
+    city: 'Chicago, IL'
 
-var name = 'Timothy Shores';
-var age = 30;
-var city = 'Chicago';
+    // var name = 'Timothy Shores';
+    // var age = 30;
+    // var city = 'Chicago'
 
-var templateTwo = React.createElement(
+};var templateTwo = React.createElement(
     'div',
     null,
     React.createElement(
         'h1',
         null,
-        name
+        user.name
     ),
     React.createElement(
         'p',
         null,
-        age,
+        user.age,
         ' years old'
     ),
     React.createElement(
         'p',
         null,
         'Location: ',
-        city
+        user.city
     )
 );
 

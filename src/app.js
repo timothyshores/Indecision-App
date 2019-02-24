@@ -16,18 +16,18 @@ var template = (
 var user = {
     name: 'Timothy Shores',
     age: 30,
-    city: 'Chicago'
+    city: 'Chicago, IL'
 }
 
-var name = 'Timothy Shores';
-var age = 30;
-var city = 'Chicago'
+// var name = 'Timothy Shores';
+// var age = 30;
+// var city = 'Chicago'
 
 var templateTwo = (
     <div>
-        <h1>{name}</h1>
-        <p>{age} years old</p>
-        <p>Location: {city}</p>
+        <h1>{user.name}</h1>
+        <p>{user.age} years old</p>
+        <p>Location: {user.city}</p>
     </div>
 );
 
