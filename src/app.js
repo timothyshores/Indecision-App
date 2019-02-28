@@ -16,6 +16,11 @@ const onFormSubmit = e => {
     }
 };
 
+const onFormReset = e => {
+    app.options = [];
+    renderApp();
+};
+
 const renderApp = () => {
     const template = (
         <div>
@@ -26,8 +31,9 @@ const renderApp = () => {
                 <input type="text" name="option" />
                 <button>Add Option</button>
             </form>
+            <br />
+            <button onClick={onFormReset} >Reset options</button>
             <ul>
-
             </ul>
         </div>
     );

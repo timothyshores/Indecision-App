@@ -18,6 +18,11 @@ var onFormSubmit = function onFormSubmit(e) {
     }
 };
 
+var onFormReset = function onFormReset(e) {
+    app.options = [];
+    renderApp();
+};
+
 var renderApp = function renderApp() {
     var template = React.createElement(
         'div',
@@ -48,6 +53,12 @@ var renderApp = function renderApp() {
                 null,
                 'Add Option'
             )
+        ),
+        React.createElement('br', null),
+        React.createElement(
+            'button',
+            { onClick: onFormReset },
+            'Reset options'
         ),
         React.createElement('ul', null)
     );
