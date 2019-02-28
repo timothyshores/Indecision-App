@@ -23,7 +23,11 @@ var onFormReset = function onFormReset(e) {
     renderApp();
 };
 
-var numbers = [1, 2, 3];
+var onMakeDecision = function onMakeDecision() {
+    var randomNum = Math.floor(Math.random() * app.options.length);
+    var option = app.options[randomNum];
+    console.log(option);
+};
 
 var renderApp = function renderApp() {
     var template = React.createElement(
@@ -56,11 +60,11 @@ var renderApp = function renderApp() {
             'Reset options'
         ),
         React.createElement(
-            'p',
-            null,
-            'This app has ',
-            app.options.length,
-            ' items'
+            'button',
+            {
+                disabled: app.options.length === 0,
+                onClick: onMakeDecision },
+            'What should I do?'
         ),
         React.createElement(
             'ul',

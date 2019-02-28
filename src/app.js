@@ -21,7 +21,11 @@ const onFormReset = e => {
     renderApp();
 };
 
-const numbers = [1, 2, 3];
+const onMakeDecision = () => {
+    const randomNum = Math.floor(Math.random() * app.options.length);
+    const option = app.options[randomNum];
+    console.log(option);
+};
 
 const renderApp = () => {
     const template = (
@@ -33,8 +37,12 @@ const renderApp = () => {
                 <button>Add Option</button>
             </form>
             <br />
-            <button onClick={onFormReset} >Reset options</button>
-            <p>This app has {app.options.length} items</p>
+            <button onClick={onFormReset}>Reset options</button>
+            <button
+                disabled={app.options.length === 0}
+                onClick={onMakeDecision}>
+                What should I do?
+            </button>
             <ul>
                 {app.options.map((option, index) => { return <li key={index}>{option}</li> })}
             </ul>
