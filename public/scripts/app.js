@@ -23,6 +23,8 @@ var onFormReset = function onFormReset(e) {
     renderApp();
 };
 
+var numbers = [1, 2, 3];
+
 var renderApp = function renderApp() {
     var template = React.createElement(
         'div',
@@ -36,13 +38,6 @@ var renderApp = function renderApp() {
             'p',
             null,
             app.subtitle
-        ),
-        React.createElement(
-            'p',
-            null,
-            'This app has ',
-            app.options.length,
-            ' items'
         ),
         React.createElement(
             'form',
@@ -60,7 +55,24 @@ var renderApp = function renderApp() {
             { onClick: onFormReset },
             'Reset options'
         ),
-        React.createElement('ul', null)
+        React.createElement(
+            'p',
+            null,
+            'This app has ',
+            app.options.length,
+            ' items'
+        ),
+        React.createElement(
+            'ul',
+            null,
+            app.options.map(function (option, index) {
+                return React.createElement(
+                    'li',
+                    { key: index },
+                    option
+                );
+            })
+        )
     );
     ReactDOM.render(template, document.getElementById('app'));
 };

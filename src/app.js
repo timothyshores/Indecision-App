@@ -21,19 +21,22 @@ const onFormReset = e => {
     renderApp();
 };
 
+const numbers = [1, 2, 3];
+
 const renderApp = () => {
     const template = (
         <div>
             <h1>{app.title}</h1>
             <p>{app.subtitle}</p>
-            <p>This app has {app.options.length} items</p>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option" />
                 <button>Add Option</button>
             </form>
             <br />
             <button onClick={onFormReset} >Reset options</button>
+            <p>This app has {app.options.length} items</p>
             <ul>
+                {app.options.map((option, index) => { return <li key={index}>{option}</li> })}
             </ul>
         </div>
     );
