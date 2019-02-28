@@ -14,39 +14,44 @@ var onFormSubmit = function onFormSubmit(e) {
     if (option) {
         app.options.push(option);
         e.target.option.value = '';
+        renderApp();
     }
 };
 
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
+var renderApp = function renderApp() {
+    var template = React.createElement(
+        'div',
         null,
-        app.title
-    ),
-    React.createElement(
-        'p',
-        null,
-        app.subtitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        'This app has ',
-        app.options.length,
-        ' items'
-    ),
-    React.createElement(
-        'form',
-        { onSubmit: onFormSubmit },
-        React.createElement('input', { type: 'text', name: 'option' }),
         React.createElement(
-            'button',
+            'h1',
             null,
-            'Add Option'
-        )
-    )
-);
+            app.title
+        ),
+        React.createElement(
+            'p',
+            null,
+            app.subtitle
+        ),
+        React.createElement(
+            'p',
+            null,
+            'This app has ',
+            app.options.length,
+            ' items'
+        ),
+        React.createElement(
+            'form',
+            { onSubmit: onFormSubmit },
+            React.createElement('input', { type: 'text', name: 'option' }),
+            React.createElement(
+                'button',
+                null,
+                'Add Option'
+            )
+        ),
+        React.createElement('ul', null)
+    );
+    ReactDOM.render(template, document.getElementById('app'));
+};
 
-ReactDOM.render(template, document.getElementById('app'));
+renderApp();

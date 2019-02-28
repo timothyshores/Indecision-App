@@ -12,19 +12,26 @@ const onFormSubmit = e => {
     if (option) {
         app.options.push(option)
         e.target.option.value = '';
+        renderApp();
     }
 };
 
-const template = (
-    <div>
-        <h1>{app.title}</h1>
-        <p>{app.subtitle}</p>
-        <p>This app has {app.options.length} items</p>
-        <form onSubmit={onFormSubmit}>
-            <input type="text" name="option" />
-            <button>Add Option</button>
-        </form>
-    </div>
-);
+const renderApp = () => {
+    const template = (
+        <div>
+            <h1>{app.title}</h1>
+            <p>{app.subtitle}</p>
+            <p>This app has {app.options.length} items</p>
+            <form onSubmit={onFormSubmit}>
+                <input type="text" name="option" />
+                <button>Add Option</button>
+            </form>
+            <ul>
 
-ReactDOM.render(template, document.getElementById('app'));
+            </ul>
+        </div>
+    );
+    ReactDOM.render(template, document.getElementById('app'));
+};
+
+renderApp();
