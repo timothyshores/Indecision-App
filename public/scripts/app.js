@@ -1,84 +1,43 @@
 'use strict';
 
-console.log('Running app.js');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var app = {
-    title: 'Indecision App',
-    subtitle: 'Let a basic CRUD app make decisions for your life',
-    options: ['One', 'Two']
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var onFormSubmit = function onFormSubmit(e) {
-    e.preventDefault();
-    var option = e.target.option.value;
-    if (option) {
-        app.options.push(option);
-        e.target.option.value = '';
-        renderApp();
+var Person = function () {
+    function Person() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anon';
+        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'age not provided';
+
+        _classCallCheck(this, Person);
+
+        this.name = name;
+        this.age = age;
     }
-};
 
-var onFormReset = function onFormReset(e) {
-    app.options = [];
-    renderApp();
-};
+    _createClass(Person, [{
+        key: 'greeting',
+        value: function greeting() {
+            return 'Hello my name is ' + this.name + ' and I am ' + this.age + ' years old';
+        }
+    }, {
+        key: 'getAge',
+        value: function getAge() {
+            return this.name + ' is ' + this.age + ' years old';
+        }
+    }]);
 
-var onMakeDecision = function onMakeDecision() {
-    var randomNum = Math.floor(Math.random() * app.options.length);
-    var option = app.options[randomNum];
-    console.log(option);
-};
+    return Person;
+}();
 
-var renderApp = function renderApp() {
-    var template = React.createElement(
-        'div',
-        null,
-        React.createElement(
-            'h1',
-            null,
-            app.title
-        ),
-        React.createElement(
-            'p',
-            null,
-            app.subtitle
-        ),
-        React.createElement(
-            'form',
-            { onSubmit: onFormSubmit },
-            React.createElement('input', { type: 'text', name: 'option' }),
-            React.createElement(
-                'button',
-                null,
-                'Add Option'
-            )
-        ),
-        React.createElement('br', null),
-        React.createElement(
-            'button',
-            { onClick: onFormReset },
-            'Reset options'
-        ),
-        React.createElement(
-            'button',
-            {
-                disabled: app.options.length === 0,
-                onClick: onMakeDecision },
-            'What should I do?'
-        ),
-        React.createElement(
-            'ul',
-            null,
-            app.options.map(function (option, index) {
-                return React.createElement(
-                    'li',
-                    { key: index },
-                    option
-                );
-            })
-        )
-    );
-    ReactDOM.render(template, document.getElementById('app'));
-};
+var me = new Person('Timothy Shores', 30);
+console.log(me.greeting());
+console.log(me.getAge());
 
-renderApp();
+var other = new Person();
+console.log(other.greeting());
+console.log(other.getAge());
+
+var gf = new Person('Amanda', 26);
+console.log(gf.greeting());
+console.log(gf.getAge());
