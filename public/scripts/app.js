@@ -1,6 +1,21 @@
 'use strict';
 
-console.log('Running app.js from src folder');
+console.log('Running app.js');
+
+var app = {
+    title: 'Indecision App',
+    subtitle: 'Let a basic CRUD app make decisions for your life',
+    options: ['One', 'Two']
+};
+
+var onFormSubmit = function onFormSubmit(e) {
+    e.preventDefault();
+    var option = e.target.option.value;
+    if (option) {
+        app.options.push(option);
+        e.target.option.value = '';
+    }
+};
 
 var template = React.createElement(
     'div',
@@ -8,68 +23,30 @@ var template = React.createElement(
     React.createElement(
         'h1',
         null,
-        'Timothy'
+        app.title
     ),
     React.createElement(
         'p',
         null,
-        'To run babel watch compiler run the following command in terminal'
+        app.subtitle
     ),
     React.createElement(
         'p',
         null,
-        'babel src/app.js --out-file=public/scripts/app.js --preset --presets=env,react --watch'
+        'This app has ',
+        app.options.length,
+        ' items'
     ),
     React.createElement(
-        'ol',
-        null,
+        'form',
+        { onSubmit: onFormSubmit },
+        React.createElement('input', { type: 'text', name: 'option' }),
         React.createElement(
-            'li',
+            'button',
             null,
-            'Item one'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'Item two'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'Item three'
+            'Add Option'
         )
     )
 );
 
-var user = {
-    name: 'Timothy Shores',
-    age: 30,
-    city: 'Chicago, IL'
-
-    // var name = 'Timothy Shores';
-    // var age = 30;
-    // var city = 'Chicago'
-
-};var templateTwo = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        user.name
-    ),
-    React.createElement(
-        'p',
-        null,
-        user.age,
-        ' years old'
-    ),
-    React.createElement(
-        'p',
-        null,
-        'Location: ',
-        user.city
-    )
-);
-
-ReactDOM.render(templateTwo, document.getElementById('app'));
+ReactDOM.render(template, document.getElementById('app'));

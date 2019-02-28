@@ -1,34 +1,30 @@
-console.log('Running app.js from src folder');
+console.log('Running app.js');
 
-var template = (
-    <div>
-        <h1>Timothy</h1>
-        <p>To run babel watch compiler run the following command in terminal</p>
-        <p>babel src/app.js --out-file=public/scripts/app.js --preset --presets=env,react --watch</p>
-        <ol>
-            <li>Item one</li>
-            <li>Item two</li>
-            <li>Item three</li>
-        </ol>
-    </div>
-);
-
-var user = {
-    name: 'Timothy Shores',
-    age: 30,
-    city: 'Chicago, IL'
+const app = {
+    title: 'Indecision App',
+    subtitle: 'Let a basic CRUD app make decisions for your life',
+    options: ['One', 'Two']
 }
 
-// var name = 'Timothy Shores';
-// var age = 30;
-// var city = 'Chicago'
+const onFormSubmit = e => {
+    e.preventDefault();
+    const option = e.target.option.value;
+    if (option) {
+        app.options.push(option)
+        e.target.option.value = '';
+    }
+};
 
-var templateTwo = (
+const template = (
     <div>
-        <h1>{user.name}</h1>
-        <p>{user.age} years old</p>
-        <p>Location: {user.city}</p>
+        <h1>{app.title}</h1>
+        <p>{app.subtitle}</p>
+        <p>This app has {app.options.length} items</p>
+        <form onSubmit={onFormSubmit}>
+            <input type="text" name="option" />
+            <button>Add Option</button>
+        </form>
     </div>
 );
 
-ReactDOM.render(templateTwo, document.getElementById('app'));
+ReactDOM.render(template, document.getElementById('app'));
