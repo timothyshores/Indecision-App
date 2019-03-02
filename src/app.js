@@ -40,7 +40,7 @@ class Options extends React.Component {
         return (
             <div>
                 <p>You currently have {this.props.options.length} number of options</p>
-                {this.props.options.map(option => <p key={option}>{option}</p>)}
+                {this.props.options.map(option => <Option key={option} optionText={option} />)}
             </div>
         );
     }
@@ -50,7 +50,7 @@ class Option extends React.Component {
     render() {
         return (
             <div>
-                <p>Placeholder: A unique and specific option will be displayed here</p>
+                <p>{this.props.optionText}</p>
             </div>
         );
     }
