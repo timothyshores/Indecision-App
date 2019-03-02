@@ -1,3 +1,16 @@
+class IndecisionApp extends React.Component {
+    render() {
+        return (
+            <div>
+                <Header />
+                <Action />
+                <Options />
+                <AddOption />
+            </div>
+        );
+    }
+}
+
 class Header extends React.Component {
     render() {
         return (
@@ -23,11 +36,25 @@ class Options extends React.Component {
     render() {
         return (
             <div>
-                <p>Placeholder: Options will be displayed here</p>
+                <Option />
+                <Option />
+                <Option />
             </div>
         );
     }
 }
+
+class Option extends React.Component {
+    render() {
+        return (
+            <div>
+                <p>Placeholder: A unique and specific option will be displayed here</p>
+            </div>
+        );
+    }
+}
+
+
 
 class AddOption extends React.Component {
     render() {
@@ -39,13 +66,4 @@ class AddOption extends React.Component {
     }
 }
 
-const jsx = (
-    <div>
-        <Header />
-        <Action />
-        <Options />
-        <AddOption />
-    </div>
-);
-
-ReactDOM.render(jsx, document.getElementById('app'));
+ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
