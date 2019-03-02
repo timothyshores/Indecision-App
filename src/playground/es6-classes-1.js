@@ -11,14 +11,43 @@ class Person {
     }
 }
 
-const me = new Person('Timothy Shores', 30);
-console.log(me.greeting());
-console.log(me.getAge());
+class Student extends Person {
+    constructor(name, age, major = 'Undeclared') {
+        super(name, age);
+        this.major = major;
+    }
+    hasMajor() {
+        return this.major !== 'Undeclared' ? true : false;
+    }
+}
 
-const other = new Person();
-console.log(other.greeting());
-console.log(other.getAge());
+class Traveler extends Person {
+    constructor(name, age, homeLocation) {
+        super(name, age);
+        this.homeLocation = homeLocation;
+    }
+    greeting() {
+        let greeting = super.greeting();
+        if (this.homeLocation) {
+            greeting += ` I am visiting from ${this.homeLocation}`;
+        }
+        return greeting;
+    }
+}
 
-const gf = new Person('Amanda', 26);
-console.log(gf.greeting());
-console.log(gf.getAge());
+const me = new Student('Timothy Shores', 30, 'Economics');
+console.log(me);
+console.log(me.hasMajor());
+
+const other = new Student();
+console.log(other);
+console.log(other.hasMajor());
+
+
+const gf = new Student('Amanda', 26, 'Mechanical engineering');
+console.log(gf);
+console.log(gf.hasMajor());
+
+const hobbit = new Traveler('Frodo', 'unknown', 'The Shire');
+console.log(hobbit);
+console.log(hobbit.greeting());
